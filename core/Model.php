@@ -1,7 +1,15 @@
 <?php
-
+/**
+ * Main model class.
+ * @file
+ */
 namespace app\core;
 
+/**
+ * Class Model
+ *
+ * @package app\core
+ */
 abstract class Model
 {
 	public const RULE_REQUIRED = 'required';
@@ -11,6 +19,16 @@ abstract class Model
 	public const RULE_MATCH = 'match';
 	public const RULE_UNIQUE = 'unique';
 
+	/**
+	 * @var array
+	 */
+	public array $errors = [];
+
+	/**
+	 * This method load data form rendered form.
+	 *
+	 * @param $data
+	 */
 	public function loadData($data)
 	{
 		foreach ($data as $key=>$value) {
@@ -18,12 +36,23 @@ abstract class Model
 				$this->{$key} = $value;
 			}
 		}
+
 	}
 
+
+	/**
+	 * This method return array of rules.
+	 *
+	 * @return array
+	 */
 	abstract function rules(): array;
 
-	public array $errors = [];
 
+	/**
+	 * This method validata data form input form and return errors if they exist.
+	 *
+	 * @return bool
+	 */
 	public function validate()
 	{
 		foreach ($this->rules() as $attribute => $rules) {
@@ -62,15 +91,22 @@ abstract class Model
 					if ($record) {
 						$this->addErrorForRule($attribute, self::RULE_UNIQUE, ['field' => $this->getLabel($attribute)]);
 					}
-
 				}
-
 			}
 		}
 
 		return empty($this->errors);
+
 	}
 
+
+	/**
+	 * THis method add error for rule.
+	 *
+	 * @param string $attribute
+	 * @param string $rule
+	 * @param array $params
+	 */
 	private function addErrorForRule(string $attribute, string $rule, $params = [])
 	{
 		$message = $this->errorMessages()[$rule] ?? '';
@@ -78,13 +114,28 @@ abstract class Model
 			$message = str_replace("{{$key}}", $value, $message);
 		}
 		$this->errors[$attribute][] = $message;
+
 	}
 
+
+	/**
+	 * This method add error.
+	 *
+	 * @param string $attribute
+	 * @param string $message
+	 */
 	public function addError(string $attribute, string $message)
 	{
 		$this->errors[$attribute][] = $message;
+
 	}
 
+
+	/**
+	 * This method return error message.
+	 *
+	 * @return string[]
+	 */
 	public function errorMessages()
 	{
 		return [
@@ -95,25 +146,58 @@ abstract class Model
 			self::RULE_MATCH => 'This field must be the same as {match}',
 			self::RULE_UNIQUE => 'This {field} already used',
 		];
+
 	}
 
+	/**
+	 * This method check if attribute has an error.
+	 *
+	 * @param $attribute
+	 * @return false|mixed
+	 */
 	public function hasError($attribute)
 	{
 		return $this->errors[$attribute] ?? false;
+
 	}
 
+
+	/**
+	 * This method return label for HTML input.
+	 *
+	 * @return array
+	 */
 	public function labels(): array
 	{
 		return [];
+
 	}
 
+
+	/**
+	 * This method get the label.
+	 *
+	 * @param $attribute
+	 * @return mixed
+	 */
 	public function getLabel($attribute)
 	{
 		return $this->labels()[$attribute] ?? $attribute;
+
 	}
 
+
+	/**
+	 * This method get first error.
+	 *
+	 * @param $attribute
+	 * @return false|mixed
+	 */
 	public function getFirstError($attribute)
 	{
 		return $this->errors[$attribute][0] ?? false;
+
 	}
+
+
 }

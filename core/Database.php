@@ -1,13 +1,27 @@
 <?php
-
+/**
+ * Main class for database.
+ */
 namespace app\core;
 
-
+/**
+ * Class Database
+ * @package app\core
+ */
 class Database
 {
 
+	/**
+	 * @var \PDO
+	 */
 	public \PDO $pdo;
 
+
+	/**
+	 * Database constructor.
+	 *
+	 * @param array $config
+	 */
 	public function __construct(array $config)
 	{
 		$dsn = $config['dsn'] ?? '';
@@ -15,8 +29,13 @@ class Database
 		$password = $config['password'] ?? '';
 		$this->pdo = new \PDO($dsn, $user, $password);
 		$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
 	}
 
+
+	/**
+	 * This method realize migrations.
+	 */
 	public function applyMigrations()
 	{
 		$this->createMigrationsTable();
@@ -46,8 +65,13 @@ class Database
 		} else {
 			$this->log("All migrations are applied");
 		}
+
 	}
 
+
+	/**
+	 * This method create table for migrations.
+	 */
 	public function createMigrationsTable()
 	{
 		$this->pdo->exec("
@@ -56,30 +80,62 @@ class Database
 		    migration VARCHAR(255),
 		    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		) ENGINE=INNODB;");
+
 	}
 
+
+	/**
+	 * This method return array of applied migrations.
+	 *
+	 * @return array
+	 */
 	public function getAppliedMigrations(): array
 	{
 		$statement = $this->pdo->prepare("SELECT migration FROM migrations");
 		$statement->execute();
 
 		return $statement->fetchAll(\PDO::FETCH_COLUMN);
+
 	}
 
+
+	/**
+	 * This method save migration in database table.
+	 *
+	 * @param array $migrations
+	 */
 	public function saveMigrations(array $migrations)
 	{
 		$str = implode(",", array_map(fn($m) => "('$m')", $migrations));
 		$statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES $str ");
 		$statement->execute();
+
 	}
 
+
+	/**
+	 * This method prepare statement for PDO.
+	 *
+	 * @param $sql
+	 * @return false|\PDOStatement
+	 */
 	public function prepare($sql)
 	{
 		return $this->pdo->prepare($sql);
+
 	}
 
+
+	/**
+	 * This method create log for migrations.
+	 *
+	 * @param $message
+	 */
 	protected function log($message)
 	{
 		echo '[' . date('Y-m-d H:i') . '] - ' . $message . PHP_EOL;
+
 	}
+
+
 }

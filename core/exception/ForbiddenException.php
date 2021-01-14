@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Custon exception class.
+ * @file
+ */
 namespace app\core\exception;
 
 /**
@@ -9,8 +12,15 @@ namespace app\core\exception;
  */
 class ForbiddenException extends \Exception
 {
-	protected $message = 'You don\'t have permission to access this page';
-	protected $code = 403;
 
+	/**
+	 * @var string
+	 */
+	protected $message = 'You don\'t have permission to access this page';
+
+	/**
+	 * @var integer
+	 */
+	protected $code = 403;
 
 }

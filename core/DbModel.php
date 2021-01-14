@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Main database class for models.
+ * @file
+ */
 namespace app\core;
 
 /**
@@ -9,12 +12,36 @@ namespace app\core;
 abstract class DbModel extends Model
 {
 
+
+	/**
+	 * This method return name of table.
+	 *
+	 * @return string
+	 */
 	abstract public function tableName(): string;
 
+
+	/**
+	 * This method return attributes for add to database table.
+	 *
+	 * @return array
+	 */
 	abstract public function attributes(): array;
 
+
+	/**
+	 * This method return primary key of database table.
+	 *
+	 * @return string
+	 */
 	abstract public function primaryKey(): string;
 
+
+	/**
+	 * This method save data to database table.
+	 *
+	 * @return bool
+	 */
 	public function save()
 	{
 		$tableName = $this->tableName();
@@ -28,15 +55,30 @@ abstract class DbModel extends Model
 		}
 
 		$statement->execute();
+
 		return true;
 
 	}
 
+
+	/**
+	 * This method prepare statement for database.
+	 *
+	 * @param $sql
+	 * @return false|\PDOStatement
+	 */
 	public static function prepare($sql)
 	{
 		return Application::$app->db->pdo->prepare($sql);
+
 	}
 
+	/**
+	 * This method search in database at least one similar value.
+	 *
+	 * @param $where
+	 * @return mixed
+	 */
 	public function findOne($where)
 	{
 		$tableName = static::tableName();
@@ -50,5 +92,8 @@ abstract class DbModel extends Model
 		$statement->execute();
 
 		return $statement->fetchObject(static::class);
+
 	}
+
+
 }

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Base field rendering class.
+ */
 namespace app\core\form;
 
 use app\core\Model;
@@ -11,20 +13,45 @@ use app\core\Model;
  */
 abstract class BaseField
 {
+
+	/**
+	 * @var Model
+	 */
 	public Model $model;
+
+	/**
+	 * @var string
+	 */
 	public string $attribute;
 
+
+	/**
+	 * BaseField constructor.
+	 *
+	 * @param Model $model
+	 * @param $attribute
+	 */
 	public function __construct(Model $model, $attribute)
 	{
 		$this->model = $model;
 		$this->attribute = $attribute;
+
 	}
 
+
+	/**
+	 * This method render input form.
+	 *
+	 * @return string
+	 */
 	abstract public function renderInput(): string;
 
+
+	/**
+	 * @return string
+	 */
 	public function __toString()
 	{
-
 		return sprintf('
 			<div class="mb-3">
 					<label>%s</label>
@@ -39,5 +66,8 @@ abstract class BaseField
 			$this->model->getFirstError($this->attribute),
 
 		);
+
 	}
+
+
 }

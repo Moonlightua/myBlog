@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Get data from database class.
+ */
 namespace app\models;
 
 use app\core\DbModel;
@@ -11,6 +13,15 @@ use app\core\DbModel;
  */
 abstract class DbDisplay
 {
+
+
+	/**
+	 * This method return array of all records from database table.
+	 *
+	 * @param string $table
+	 *
+	 * @return array
+	 */
 	public static function show(string $table): array
 	{
 		$sql = "SELECT * FROM $table ORDER BY id DESC";
@@ -19,8 +30,17 @@ abstract class DbDisplay
 		$result = $statement->fetchAll();
 
 		return $result;
+
 	}
 
+	/**
+	 * This method return array of record by id from database.
+	 *
+	 * @param string $table
+	 * @param string $condition
+	 *
+	 * @return array
+	 */
 	public static function showSingle(string $table, string $condition): array
 	{
 		$sql = "SELECT * FROM $table WHERE id=$condition";
@@ -29,8 +49,18 @@ abstract class DbDisplay
 		$result = $statement->fetchAll();
 
 		return $result;
+
 	}
 
+
+	/**
+	 * This method return array of records with limit from database.
+	 *
+	 * @param string $table
+	 * @param int $quantity
+	 *
+	 * @return array
+	 */
 	public static function showLastArticles(string $table, int $quantity): array
 	{
 		$sql = "SELECT * FROM $table ORDER BY id DESC LIMIT $quantity";
@@ -39,5 +69,8 @@ abstract class DbDisplay
 		$result = $statement->fetchAll();
 
 		return $result;
+
 	}
+
+
 }

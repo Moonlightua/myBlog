@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Authorization middleware class.
+ */
 namespace app\core\middlewares;
 
 use app\core\Application;
@@ -12,13 +14,29 @@ use app\core\exception\ForbiddenException;
  */
 class AuthMiddleware extends BaseMiddleware
 {
+
+	/**
+	 * @var array
+	 */
 	public array $actions = [];
 
+
+	/**
+	 * AuthMiddleware constructor.
+	 * @param array $actions
+	 */
 	public function __construct(array $actions = [])
 	{
 		$this->actions = $actions;
+
 	}
 
+
+	/**
+	 * This method implement middleware service for authorization.
+	 *
+	 * @throws ForbiddenException
+	 */
 	public function execute()
 	{
 		if (Application::isGuest())	{
@@ -26,5 +44,8 @@ class AuthMiddleware extends BaseMiddleware
 				throw new ForbiddenException();
 			}
 		}
+
 	}
+
+
 }

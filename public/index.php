@@ -7,11 +7,8 @@ use app\core\Application;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
-
-
 
 $config = [
 	'userClass' => app\models\User::class,
@@ -47,11 +44,6 @@ $app->router->get('/addArticle', [AdminController::class, 'addArticle']);
 $app->router->post('/addArticle', [AdminController::class, 'addArticle']);
 $app->router->get('/subEmails', [AdminController::class, 'subEmails']);
 $app->router->get('/messages', [AdminController::class, 'messages']);
-
-
-
-
-
 
 $app->run();
 

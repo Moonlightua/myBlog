@@ -534,3 +534,7 @@ height:44px;
 	width: 75%;
 	color: black;
 }
+
+.username {
+	word-spacing: -6px;
+}

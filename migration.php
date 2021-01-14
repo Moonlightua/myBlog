@@ -1,9 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
-
-
 use app\controllers\AuthController;
 use app\controllers\SiteController;
 use app\core\Application;
@@ -20,8 +16,6 @@ $config = [
 		'password' => $_ENV['DB_PASSWORD']
 	],
 ];
-
-
 
 $app = new Application(__DIR__, $config);
 

@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Admin middleware class.
+ * @file
+ */
 namespace app\core\middlewares;
 
 use app\core\Application;
@@ -12,13 +15,30 @@ use app\core\exception\ForbiddenException;
  */
 class AdminMiddleware extends BaseMiddleware
 {
+
+	/**
+	 * @var array
+	 */
 	public array $actions = [];
 
+
+	/**
+	 * AdminMiddleware constructor.
+	 *
+	 * @param array $actions
+	 */
 	public function __construct(array $actions = [])
 	{
 		$this->actions = $actions;
+
 	}
 
+
+	/**
+	 * This method implement middleware service for admin.
+	 *
+	 * @throws ForbiddenException
+	 */
 	public function execute()
 	{
 		if (!Application::isAdmin()) {
@@ -26,5 +46,8 @@ class AdminMiddleware extends BaseMiddleware
 				throw new ForbiddenException();
 			}
 		}
+
 	}
+
+
 }

@@ -33,19 +33,11 @@ use app\core\Application;
 		<a href="/login">Login</a>
 		<a href="/register">Register</a>
 		<?php else: ?>
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item active">
-					Welcome, <?php echo Application::$app->user->getDisplayName(); ?>
-				<a class="nav-link" aria-current="page" href="/logout">
-					Logout
-				</a>
-			</li>
-			<li class="nav-item active">
-				<a class="nav-link" aria-current="page" href="/profile">
-					Profile
-				</a>
-			</li>
-		</ul>
+		<a href="/profile">Profile</a>
+		<a class="right" href="/logout">Logout</a>
+		<div class="username">
+			Welcome, <?php echo Application::$app->user->getDisplayName(); ?>
+		</div>
 		<?php endif; ?>
 		<?php if (Application::isAdmin()): ?>
 		<ul class="navbar-nav ml-auto">

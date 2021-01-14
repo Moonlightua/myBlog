@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Base middleware class.
+ */
 namespace app\core\middlewares;
 
 /**
@@ -9,5 +11,14 @@ namespace app\core\middlewares;
  */
 abstract class BaseMiddleware
 {
+
+
+	/**
+	 * Base execute method.
+	 *
+	 * @return mixed
+	 */
 	abstract public function execute();
+
+
 }

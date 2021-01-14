@@ -1,4 +1,9 @@
 <?php
+/**
+ * This controller responsible for main pages of the site.
+ *
+ * @file
+ */
 
 namespace app\controllers;
 
@@ -18,6 +23,16 @@ use app\models\User;
  */
 class SiteController extends Controller
 {
+
+
+	/**
+	 * This method responsible for contact page.
+	 *
+	 * @param Request  $request
+	 * @param Response $response
+	 *
+	 * @return string|string[]
+	 */
 	public function contact(Request $request, Response $response)
 	{
 		$contact = new ContactForm();
@@ -28,11 +43,20 @@ class SiteController extends Controller
 				$response->redirect('/contact');
 			}
 		}
-		return $this->render('contact', [
-			'model' => $contact
-		]);
+
+		return $this->render('contact', ['model' => $contact]);
+
 	}
 
+
+	/**
+	 * This method responsible for home page.
+	 *
+	 * @param Request  $request
+	 * @param Response $response
+	 *
+	 * @return string|string[]
+	 */
 	public function home(Request $request, Response $response)
 	{
 		$sub = new HomeForm();
@@ -47,12 +71,21 @@ class SiteController extends Controller
 
 		$lastArticles = new Blog();
 
-		$params = [
-			'model' => $sub
-		];
+		$params = ['model' => $sub];
+
 		return $this->render('home', $params);
+
 	}
 
+
+	/**
+	 * This method responsible for about page.
+	 *
+	 * @param Request  $request
+	 * @param Response $response
+	 *
+	 * @return string|string[]
+	 */
 	public function about(Request $request, Response $response)
 	{
 		$sub = new AboutForm();
@@ -67,32 +100,43 @@ class SiteController extends Controller
 
 		$lastArticles = new Blog();
 
-		$params = [
-			'model' => $sub
-		];
+		$params = ['model' => $sub];
 
 		return $this->render('about', $params);
+
 	}
 
+
+	/**
+	 * This method responsible for blog page.
+	 *
+	 * @return string|string[]
+	 */
 	public function blog()
 	{
 		$blog = new Blog();
 
-		$params = [
-			'model' => $blog
-		];
+		$params = ['model' => $blog];
 
-		$path = $blog->link() ?? '/blog';
+		($path = $blog->link() ?? '/blog');
 		$position = strpos($path, '?');
 		if ($position === false) {
 			return $this->render('blog', $params);
 		} else {
 			return $this->render('article', $params);
+
 		}
 	}
 
+
+	/**
+	 * This method responsible for admin page.
+	 *
+	 * @return string|string[]
+	 */
 	public function admin()
 	{
 		return $this->render('admin');
+
 	}
 }
