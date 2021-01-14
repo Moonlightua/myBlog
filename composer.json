@@ -1,0 +1,20 @@
+{
+    "name": "shy/blog",
+    "description": "Blog for testing my PHP skills.",
+    "authors": [
+        {
+            "name": "shY",
+            "email": "kostyabohach@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.2"
+    }
+
+}
