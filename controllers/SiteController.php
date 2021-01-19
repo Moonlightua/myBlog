@@ -12,6 +12,7 @@ use app\core\Request;
 use app\core\Response;
 use app\models\AboutForm;
 use app\models\Blog;
+use app\models\Comments;
 use app\models\ContactForm;
 use app\models\HomeForm;
 use app\models\User;
@@ -112,11 +113,31 @@ class SiteController extends Controller
 	 *
 	 * @return string|string[]
 	 */
-	public function blog()
+	public function blog(Request $request, Response $response)
 	{
 		$blog = new Blog();
+		$comments = new Comments();
+		$params = ['model' => $blog,
+			'comments' => $comments];
 
-		$params = ['model' => $blog];
+		if ($request->isPost()) {
+			$comments->loadData($request->getBody());
+
+			if ($comments->validate() && $comments->save()) {
+				Application::$app->session->setFlash('success', 'Comment added');
+				$link = $_SERVER['REQUEST_URI'];
+				Application::$app->response->redirect($link);
+			}
+
+			($path = $blog->link() ?? '/blog');
+			$position = strpos($path, '?');
+			if ($position === false) {
+				return $this->render('blog', $params);
+			} else {
+				return $this->render('article', $params);
+
+			}
+		}
 
 		($path = $blog->link() ?? '/blog');
 		$position = strpos($path, '?');
@@ -126,6 +147,7 @@ class SiteController extends Controller
 			return $this->render('article', $params);
 
 		}
+
 	}
 
 
@@ -139,4 +161,5 @@ class SiteController extends Controller
 		return $this->render('admin');
 
 	}
+
 }

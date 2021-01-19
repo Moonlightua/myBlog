@@ -38,6 +38,7 @@ $app->router->post('/about', [SiteController::class, 'about']);
 $app->router->post('/contact', [SiteController::class, 'contact']);
 $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->post('/register', [AuthController::class, 'register']);
+$app->router->post('/blog', [SiteController::class, 'blog']);
 
 /** Admin Routes */
 $app->router->get('/addArticle', [AdminController::class, 'addArticle']);

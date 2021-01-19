@@ -11,7 +11,7 @@ use app\core\DbModel;
  *
  * @package app\models
  */
-abstract class DbDisplay
+class DbDisplay
 {
 
 

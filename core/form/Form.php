@@ -55,5 +55,48 @@ class Form
 
 	}
 
+	/**
+	 * This method start HTML block with comments.
+	 *
+	 * @param string $label
+	 * @param string $class
+	 *
+	 * @return Form
+	 */
+	public static function startComments(string $label, string $class)
+	{
 
+		echo sprintf('
+					<div class="%s">
+						<hr>
+						<label class="%s label">%s</label>'
+			, $class, $label, $label);
+		return new Form();
+
+	}
+
+
+	/**
+	 * This method ends HTML block.
+	 */
+	public static function close()
+	{
+		echo '</div>';
+
+	}
+
+
+	public static function renderCommentForm(string $class)
+	{
+		echo sprintf('
+			<div class="%s">
+				<form>
+				<input type="text" name="name" class="comment-name">
+				<input type="text" name="email" class="comment-email">
+				<textarea type="text" name="text" class="comment-text"></textarea>
+				<button type="submit" class="button contact">send</button>
+				</form>
+			</div>
+		', $class);
+	}
 }

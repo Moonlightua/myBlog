@@ -538,3 +538,86 @@ height:44px;
 .username {
 	word-spacing: -6px;
 }
+
+.article {
+	font-family: 'Comfortaa', cursive;
+	text-align: justify;
+	font-size: 25px;
+	padding: 30px;
+}
+
+.comments-time{
+	font-size:17px;
+	color:gray;
+	margin-top:10px;
+	word-spacing:0px;
+}
+
+.comments-header{
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.comments-name {
+	margin-right:5px;
+	font-weight:bold;
+}
+
+.comments-email {
+	background-image: linear-gradient(45deg, #6b6b83, #3b8d99);
+	background-repeat: repeat-x;
+	font-size: 15px;
+	font-weight: bold;
+	display: inline-flex;
+	padding: 2px 8px;
+	color: white;
+	border-radius: 4px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.comments-text {
+	margin-left:15px;
+}
+
+.title.comment {
+	font-weight:bold;
+	text-align:center;
+	font-size:37px;
+	margin-bottom:24px;
+	position:relative;
+	text-transform:uppercase;
+
+}
+
+.title.comment:before{
+	 content: '';
+	 height: 2px;
+	 width: 100%;
+	 background-color: #e0e0e0;
+	 position: absolute;
+	 z-index: 5;
+	 left: 0;
+	 right: 0;
+	 top: calc(42% - 1px);
+}
+
+span{
+	background: white;
+	position: relative;
+	z-index: 10;
+	padding: 0 16px;
+}
+
+.comments{
+	font-family:'Comfortaa', cursive;
+	font-size:22px;
+}
+
+textarea{
+	height:200px;
+}
+
+.comments-button {
+	text-align:center;
+}
