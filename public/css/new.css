@@ -3,6 +3,9 @@ body{
 	word-spacing:5px;
 }
 
+.content {
+}
+
 img{
 	width:100%
 }
@@ -620,4 +623,28 @@ textarea{
 
 .comments-button {
 	text-align:center;
+}
+
+.admin-panel {
+	margin-top:20px;
+	margin-bottom:20px;
+	display:flex;
+	flex-flow:row;
+	font-size:30px;
+	padding-left: 23%;
+}
+
+.admin-item{
+	text-align:center;
+	padding-left:50px;
+}
+
+li {
+	list-style-type:none;
+}
+
+.navbar-admin {
+	word-spacing:0;
+	width: 59%;
+	padding-left: 45%;
 }

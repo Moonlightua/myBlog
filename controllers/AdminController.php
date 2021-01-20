@@ -12,6 +12,7 @@ use app\core\middlewares\AdminMiddleware;
 use app\core\Request;
 use app\core\Response;
 use app\models\AddArticleForm;
+use app\models\DbDisplay;
 use app\models\Messages;
 use app\models\SubEmails;
 
@@ -44,8 +45,18 @@ class AdminController extends Controller
 	 */
 	public function addArticle(Request $request, Response $response)
 	{
+
 		$article = new AddArticleForm();
+
 		if ($request->isPost()) {
+
+			$arr = DbDisplay::showLastArticles('articles', 1);
+			$id = $arr[0]['id'] + 1;
+			$name = substr($_FILES['image']['name'],-4);
+			$image_id = $id . $name;
+			$image_path = '../public/img/'. $image_id;
+			copy($_FILES['image']['tmp_name'], $image_path);
+
 			$article->loadData($request->getBody());
 			if ($article->validate() && $article->save()) {
 				Application::$app->session->setFlash('success', 'Article successful added!');

@@ -40,13 +40,13 @@ use app\core\Application;
 		</div>
 		<?php endif; ?>
 		<?php if (Application::isAdmin()): ?>
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item active">
-				<a class="nav-link" aria-current="page" href="/admin">
-					Admin Panel
-				</a>
-			</li>
-		</ul>
+		<div class="navbar-admin">
+			<a class="nav-link" aria-current="page" href="/admin">
+				Admin Panel
+			</a>
+		</div>
+
+
 		<?php endif; ?>
 	</div>
 </header>

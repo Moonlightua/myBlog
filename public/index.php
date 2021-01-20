@@ -32,6 +32,8 @@ $app->router->get('/contact',[SiteController::class, 'contact']);
 $app->router->get('/profile', [AuthController::class, 'profile']);
 $app->router->get('/logout', [AuthController::class, 'logout']);
 
+/** TEST */
+$app->router->get('/test', [SiteController::class, 'test']);
 /** Request routes */
 $app->router->post('/', [SiteController::class, 'home']);
 $app->router->post('/about', [SiteController::class, 'about']);

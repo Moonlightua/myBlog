@@ -162,4 +162,10 @@ class SiteController extends Controller
 
 	}
 
+	public function test()
+	{
+		return $this->render('test');
+
+	}
+
 }

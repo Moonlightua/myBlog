@@ -1,11 +1,11 @@
-<ul>
-	<li>
+<div class="admin-panel">
+	<div class="admin-item">
 		<a href="/addArticle">Add New Article</a>
-	</li>
-	<li>
+	</div>
+	<div class="admin-item">
 		<a href="/subEmails">Subscriber Emails</a>
-	</li>
-	<li>
+	</div>
+	<div class="admin-item">
 		<a href="/messages">Messages</a>
-	</li>
-</ul>
+	</div>
+</div>

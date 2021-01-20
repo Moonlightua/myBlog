@@ -11,11 +11,25 @@ $path = $_SERVER['REQUEST_URI'];
 $position = strpos($path, '?');
 
 $id = substr($path, $position + 4, strlen($path));
+$allImages = scandir('../public/img/');
 
+foreach ($allImages as $item) {
+	$dot = strpos($item, '.');
+	$letters = strlen(substr($item, $dot));
+	$images[] = substr($item, 0, (strlen($item) - $letters));
+}
+
+foreach ($images as $key => $value) {
+	if ($value == $id) {
+		$imgKey = $key;
+	}
+}
+
+$imgId = $allImages[$imgKey];
 
 echo "<div class='article'>";
 $article = $model->showOne($id);
-
+echo "<div class='inner-article'>";
 foreach ($article as $item) {
 	$title = $item['title'];
 	$date = $item['created_at'];
@@ -24,16 +38,17 @@ foreach ($article as $item) {
 	$id = $item['id'];
 
 	echo <<< msg
-		<p>
-			<b>$title | $time</b><br>
+			<div class="article-image"><img src="../img/$imgId"></div>
+			<div class="article-title">$title | $time</div>
+			
 			<hr>
-			$text
-		</p>
+			<div class="article-text">$text</div>
+	
 msg;
 
 }
 
-
+echo "<div>";
 
 
 echo "</div>";

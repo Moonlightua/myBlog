@@ -24,6 +24,11 @@ class AddArticleForm extends DbModel
 	 */
 	public string $text = '';
 
+	/**
+	 * @var string
+	 */
+	public ?string $image = '';
+
 
 	/**
 	 * {@inheritdoc}
@@ -32,7 +37,8 @@ class AddArticleForm extends DbModel
 	{
 		return [
 			'title' => [self::RULE_REQUIRED],
-			'text' => [self::RULE_REQUIRED]
+			'text' => [self::RULE_REQUIRED],
+
 			];
 
 	}
@@ -46,6 +52,7 @@ class AddArticleForm extends DbModel
 		return [
 			'title' => 'Title',
 			'text' => 'Text',
+			'image' => 'Image'
 		];
 
 	}
@@ -55,6 +62,7 @@ class AddArticleForm extends DbModel
 	 * {@inheritdoc}
 	 */
 	public function save() {
+
 		return parent::save();
 
 	}

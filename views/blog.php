@@ -60,7 +60,7 @@ msg;
 					}
 				echo '</div>';
 			// ------Block Comment Form------
-
+		echo '<div class="title comment"><span>leave your comment!</span></div>';
 			echo '<div class="comment-form">';
 				$form = Form::begin('', "post");
 					echo '<div class="row">';

@@ -30,6 +30,21 @@ class Form
 
 	}
 
+	/**
+	 * This method begin HTML form.
+	 *
+	 * @param $action
+	 * @param $method
+	 *
+	 * @return Form
+	 */
+	public static function addArticleForm($action, $method)
+	{
+		echo sprintf('<form action="%s" method="%s" enctype="multipart/form-data">', $action, $method);
+		return new Form();
+
+	}
+
 
 	/**
 	 * This method end HTML form.
@@ -98,5 +113,11 @@ class Form
 				</form>
 			</div>
 		', $class);
+	}
+
+
+	public static function imageField()
+	{
+		return '<input type="file" name="image">';
 	}
 }
