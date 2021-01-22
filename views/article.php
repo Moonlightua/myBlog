@@ -10,7 +10,10 @@ use app\models\DbDisplay;
 $path = $_SERVER['REQUEST_URI'];
 $position = strpos($path, '?');
 
+
 $id = substr($path, $position + 4, strlen($path));
+
+
 $allImages = scandir('../public/img/');
 
 foreach ($allImages as $item) {
@@ -25,7 +28,9 @@ foreach ($images as $key => $value) {
 	}
 }
 
-$imgId = $allImages[$imgKey];
+
+
+
 
 echo "<div class='article'>";
 $article = $model->showOne($id);
@@ -36,9 +41,17 @@ foreach ($article as $item) {
 	$time = substr(str_replace('-','.', $date), 0,strlen($date) - 3);
 	$text = $item['text'];
 	$id = $item['id'];
+	$image = $item['image'];
+
+if ($image != null) {
+    echo <<< msg
+			<div class="article-image">
+			<img src="../img/$image">
+			</div>
+msg;
+}
 
 	echo <<< msg
-			<div class="article-image"><img src="../img/$imgId"></div>
 			<div class="article-title">$title | $time</div>
 			
 			<hr>
@@ -48,7 +61,7 @@ msg;
 
 }
 
-echo "<div>";
+echo "</div>";
 
 
 echo "</div>";

@@ -38,7 +38,6 @@ class AddArticleForm extends DbModel
 		return [
 			'title' => [self::RULE_REQUIRED],
 			'text' => [self::RULE_REQUIRED],
-
 			];
 
 	}
@@ -83,7 +82,7 @@ class AddArticleForm extends DbModel
 	 */
 	public function attributes(): array
 	{
-		return ['title', 'text'];
+		return ['title', 'text', 'image'];
 
 	}
 
@@ -98,4 +97,8 @@ class AddArticleForm extends DbModel
 	}
 
 
+    public function edit($id)
+    {
+        return parent::edit($id);
+	}
 }

@@ -12,6 +12,8 @@ use app\core\middlewares\AdminMiddleware;
 use app\core\Request;
 use app\core\Response;
 use app\models\AddArticleForm;
+use app\models\Admin;
+use app\models\Blog;
 use app\models\DbDisplay;
 use app\models\Messages;
 use app\models\SubEmails;
@@ -95,4 +97,26 @@ class AdminController extends Controller
 		return $this->render('messages', ['model' => $messages]);
 
 	}
+
+
+    public function allArticles()
+    {
+        $field = new AddArticleForm();
+        $articles = new Blog();
+        $params = [
+            'model' => $articles,
+            'field' => $field
+        ];
+        $path = $articles->link() ?? '/allArticles';
+
+        $position = strpos($path, '?');
+        if ($position === false) {
+            return $this->render('allArticles', $params);
+        } else {
+            return $this->render('articlesEdit', $params);
+
+        }
+
+    }
+
 }

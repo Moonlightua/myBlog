@@ -99,7 +99,7 @@ class HomeForm extends DbModel
 
 			echo <<< msg
 		<p>
-			<b><a href="/blog?id=$id">$title | [$time] </a></b><br>
+			<b><a href="/article?id=$id">$title | [$time] </a></b><br>
 		</p>
 msg;
 		}

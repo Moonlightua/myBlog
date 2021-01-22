@@ -11,6 +11,8 @@ use app\core\Application;
 use app\core\Request;
 use app\core\Response;
 use app\models\AboutForm;
+use app\models\AddArticleForm;
+use app\models\Admin;
 use app\models\Blog;
 use app\models\Comments;
 use app\models\ContactForm;
@@ -25,6 +27,8 @@ use app\models\User;
 class SiteController extends Controller
 {
 
+
+    static array $parametres = [];
 
 	/**
 	 * This method responsible for contact page.
@@ -117,6 +121,7 @@ class SiteController extends Controller
 	{
 		$blog = new Blog();
 		$comments = new Comments();
+
 		$params = ['model' => $blog,
 			'comments' => $comments];
 
@@ -128,25 +133,9 @@ class SiteController extends Controller
 				$link = $_SERVER['REQUEST_URI'];
 				Application::$app->response->redirect($link);
 			}
-
-			($path = $blog->link() ?? '/blog');
-			$position = strpos($path, '?');
-			if ($position === false) {
-				return $this->render('blog', $params);
-			} else {
-				return $this->render('article', $params);
-
-			}
 		}
 
-		($path = $blog->link() ?? '/blog');
-		$position = strpos($path, '?');
-		if ($position === false) {
 			return $this->render('blog', $params);
-		} else {
-			return $this->render('article', $params);
-
-		}
 
 	}
 
@@ -168,4 +157,39 @@ class SiteController extends Controller
 
 	}
 
+    public function article(Request $request, Response $response)
+    {
+
+            $articles = new Blog();
+
+            $params = [
+                'model' => $articles,
+            ];
+            return $this->render("article", $params);
+	}
+
+    public function articlePost(Request $request, Response $response)
+    {
+            $articles = new Blog();
+            $article = new AddArticleForm();
+            $path = $_SERVER['HTTP_REFERER'];
+
+            $name = Admin::getFileName($path, $_FILES, '?edit=');
+            $id = $name['id'];
+            $imageName = $name['name'];
+
+            $article->loadData($request->getBody());
+            $article->image = $imageName;
+
+            if ($article->edit($id)) {
+                Application::$app->session->setFlash('success', 'Article successful edited!');
+            $params = [
+                'model' => $articles,
+                'image' => $imageName,
+                'id' => $id
+            ];
+                $response->redirect("$path");
+            }
+
+	}
 }

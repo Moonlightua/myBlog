@@ -52,12 +52,36 @@ abstract class DbModel extends Model
 
 		foreach ($attributes as $attribute) {
 			$statement->bindValue(":$attribute", $this->{$attribute});
+            echo $this->{$attribute};
 		}
+        exit;
 
 		$statement->execute();
 
 		return true;
 
+	}
+
+    public function edit($id)
+    {
+
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+
+        $params = array_map(fn($attr) => ":$attr", $attributes);
+        $arr = array_combine($attributes, $params);
+        foreach ($arr as $key => $value) {
+            $str[] = $key.'='.$value;
+        }
+
+        $statement = self::prepare("UPDATE $tableName SET $str[0], $str[1], $str[2] WHERE id=$id");
+
+        foreach ($attributes as $attribute) {
+            $statement->bindValue(":$attribute", $this->{$attribute});
+        }
+        $statement->execute();
+
+        return true;
 	}
 
 

@@ -20,5 +20,4 @@ use app\core\form\TextareaField;
 
 <?php Form::end(); ?>
 
-<?php
 

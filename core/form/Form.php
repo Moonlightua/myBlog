@@ -120,4 +120,21 @@ class Form
 	{
 		return '<input type="file" name="image">';
 	}
+
+
+    public function editField($label, $value)
+    {
+        return sprintf('
+                <label>%s</label>
+                <input type="text" name="title" class="form-control field" value="%s">
+        ',$label, $value);
+	}
+
+    public function editTextarea($label, $value)
+    {
+        return sprintf('
+                <label>%s</label>
+                <textarea type="text" name="text" class="form-control textarea">%s</textarea>
+        ',$label, $value);
+    }
 }

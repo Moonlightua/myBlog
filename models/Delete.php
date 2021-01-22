@@ -13,7 +13,7 @@ use app\core\DbModel;
  */
 class Delete
 {
-	const ARTICLE = 'App\ArticlesCenter';
+	const ARTICLE = 'app\models\Blog';
 	const EMAIL = 'app\models\SubEmails';
 	const MESSAGE = 'app\models\Messages';
 
