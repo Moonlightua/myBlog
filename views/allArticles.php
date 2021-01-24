@@ -21,7 +21,7 @@ foreach ($article as $item) {
     $id = $item['id'];
 
     echo <<< msg
-			<div class="article-title"><a href="/article?id=$id">$title</a> | $time</div>
+			<div class="article-title"><a href="/article?id=$id">$id. $title</a> | $time</div>
 			
 			<div class="article-text">$text</div>
             <p align="right">

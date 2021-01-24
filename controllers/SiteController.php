@@ -16,6 +16,7 @@ use app\models\Admin;
 use app\models\Blog;
 use app\models\Comments;
 use app\models\ContactForm;
+use app\models\DbDisplay;
 use app\models\HomeForm;
 use app\models\User;
 
@@ -174,21 +175,47 @@ class SiteController extends Controller
             $article = new AddArticleForm();
             $path = $_SERVER['HTTP_REFERER'];
 
-            $name = Admin::getFileName($path, $_FILES, '?edit=');
-            $id = $name['id'];
-            $imageName = $name['name'];
 
-            $article->loadData($request->getBody());
-            $article->image = $imageName;
+            if ($_FILES['image']['size'] !== 0) {
+                $name = Admin::getFileName($path, $_FILES, '?edit=');
+                $id = $name['id'];
+                $imageName = $name['name'];
 
-            if ($article->edit($id)) {
-                Application::$app->session->setFlash('success', 'Article successful edited!');
-            $params = [
-                'model' => $articles,
-                'image' => $imageName,
-                'id' => $id
-            ];
+
+                $params = [
+                    'model' => $articles,
+                    'image' => $imageName,
+                    'id' => $id
+                ];
+
+                $article->loadData($request->getBody());
+                $article->image = $imageName;
+
+                if ($article->edit($id)) {
+                    Application::$app->session->setFlash('success', 'Article successful edited!');
+                }
+
                 $response->redirect("$path");
+
+            } else {
+                $id = Admin::getArticleId($path, '?edit=');
+
+                $params = [
+                    'model' => $articles,
+                    'id' => $id
+                ];
+                $article->loadData($request->getBody());
+                $image = DbDisplay::getImageName('articles', $id);
+
+                $article->image = $image[0]['image'];
+                if ($article->edit($id)) {
+
+                    Application::$app->session->setFlash('success', 'Article successful edited!');
+
+                    $response->redirect("$path");
+            }
+
+
             }
 
 	}

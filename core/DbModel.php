@@ -5,6 +5,8 @@
  */
 namespace app\core;
 
+use app\models\DbDisplay;
+
 /**
  * Class DbModel
  * @package app\core
@@ -68,17 +70,28 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes = $this->attributes();
 
+
         $params = array_map(fn($attr) => ":$attr", $attributes);
         $arr = array_combine($attributes, $params);
         foreach ($arr as $key => $value) {
             $str[] = $key.'='.$value;
         }
 
-        $statement = self::prepare("UPDATE $tableName SET $str[0], $str[1], $str[2] WHERE id=$id");
+        foreach ($attributes as $attribute) {
+            $arr[] = $this->{$attribute};
+
+        }
+
+
+            $statement = self::prepare("UPDATE $tableName SET $str[0], $str[1], $str[2] WHERE id=$id");
 
         foreach ($attributes as $attribute) {
+
             $statement->bindValue(":$attribute", $this->{$attribute});
+
+
         }
+
         $statement->execute();
 
         return true;

@@ -72,4 +72,14 @@ class DbDisplay
 
 	}
 
+	public static function getImageName(string $table,int $id)
+    {
+        $sql = "SELECT * FROM $table WHERE id=$id";
+        $statement = DbModel::prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        return $result;
+    }
+
 }

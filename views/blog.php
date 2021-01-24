@@ -20,7 +20,7 @@ foreach ($articles as $article) {
 
 	echo <<< msg
 		<p>
-			<b><a href="/article?id=$id">$title | [$time] </a></b><br>
+			<b><a href="/article?id=$id">$id. $title | [$time] </a></b><br>
 		</p>
 		<hr>
 msg;

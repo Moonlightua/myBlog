@@ -1,3 +1,5 @@
+<div class="back"><a href="/allArticles">BACK</a></div>
+
 <h1>Edit Article</h1>
 
 <?php use app\core\form\Form;
