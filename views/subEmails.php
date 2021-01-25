@@ -2,29 +2,13 @@
 
 /** @var $model \app\models\SubEmails */
 
-use app\models\Delete;
+use app\models\AdminArticleDelete;
+use app\models\SubEmailsRender;
 
-$articles = $model->showSubList();
+$emails = $model->showSubList();
 
 if (isset($_GET['del']) && is_numeric($_GET['del'])) {
-	$id = (int)$_GET['del'];
-	Delete::delete($id, get_class($model));
-	header("Location: /subEmails");
+    $delete = new AdminArticleDelete($_GET['del'], $model);
 }
 
-foreach ($articles as $article) {
-	$email = $article['email'];
-	$id = $article['id'];
-	$time = $article['created_at'];
-
-	echo <<< msg
-		<p>
-			<b>$id.) $email [$time]</b><br>
-		</p>
-		<p align="right">
-		<a href="/subEmails?del=$id">Delete</a>
-	</p>
-<hr>
-msg;
-
-}
+$render = new SubEmailsRender($emails);

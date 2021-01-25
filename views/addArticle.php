@@ -13,6 +13,7 @@ use app\core\form\TextareaField;
 
 <?php $form = Form::addArticleForm('addArticle', 'post'); ?>
 <?php echo $form->field($model, 'title') ?>
+<?php echo $form->field($model, 'subtitle') ?>
 <?php echo $form->imageField(); ?>
 <?php echo new TextareaField($model, 'text') ?>
 

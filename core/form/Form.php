@@ -122,12 +122,12 @@ class Form
 	}
 
 
-    public function editField($label, $value)
+    public function editField($label, $value, $name)
     {
         return sprintf('
                 <label>%s</label>
-                <input type="text" name="title" class="form-control field" value="%s">
-        ',$label, $value);
+                <input type="text" name="%s" class="form-control field" value="%s">
+        ',$label,$name, $value);
 	}
 
     public function editTextarea($label, $value)

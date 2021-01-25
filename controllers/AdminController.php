@@ -60,6 +60,7 @@ class AdminController extends Controller
 			copy($_FILES['image']['tmp_name'], $image_path);
 
 			$article->loadData($request->getBody());
+            $article->image = $image_id;
 			if ($article->validate() && $article->save()) {
 				Application::$app->session->setFlash('success', 'Article successful added!');
 				$response->redirect('/addArticle');
@@ -109,7 +110,7 @@ class AdminController extends Controller
         ];
         $path = $articles->link() ?? '/allArticles';
 
-        $position = strpos($path, '?');
+        $position = strpos($path, '?edit');
         if ($position === false) {
             return $this->render('allArticles', $params);
         } else {

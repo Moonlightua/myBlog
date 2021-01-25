@@ -17,11 +17,13 @@ $article = $model->showOne($id);
 foreach ($article as $item) {
     $title = $item['title'];
     $text = $item['text'];
+    $subtitle = $item['subtitle'];
 }
 
 
-$form = Form::addArticleForm('articlePost', 'post'); ?>
-<?php echo '<div>' . $form->editField('Title',$title).'</div>' ?>
+$form = Form::addArticleForm('articleEdit', 'post'); ?>
+<?php echo '<div>' . $form->editField('Title',$title, 'title').'</div>' ?>
+<?php echo '<div>' . $form->editField('Subtitle',$subtitle, 'subtitle').'</div>' ?>
 <?php echo '<div>' . $form->imageField() . '</div>'; ?>
 <?php echo '<div>' . $form->editTextarea('Text',$text) . '</div>' ?>
 

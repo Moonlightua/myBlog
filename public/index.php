@@ -44,7 +44,7 @@ $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->post('/register', [AuthController::class, 'register']);
 $app->router->post('/blog', [SiteController::class, 'blog']);
 $app->router->post('/article', [SiteController::class, 'article']);
-$app->router->post('/articlePost', [SiteController::class, 'articlePost']);
+$app->router->post('/articleEdit', [SiteController::class, 'articleEdit']);
 
 /** Admin Routes */
 $app->router->get('/addArticle', [AdminController::class, 'addArticle']);

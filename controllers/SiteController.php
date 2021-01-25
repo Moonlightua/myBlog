@@ -169,7 +169,7 @@ class SiteController extends Controller
             return $this->render("article", $params);
 	}
 
-    public function articlePost(Request $request, Response $response)
+    public function articleEdit(Request $request, Response $response)
     {
             $articles = new Blog();
             $article = new AddArticleForm();
