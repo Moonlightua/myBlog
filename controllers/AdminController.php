@@ -52,6 +52,12 @@ class AdminController extends Controller
 
 		if ($request->isPost()) {
 
+            if ($_FILES['image']['size'] == 0) {
+                Application::$app->session->setFlash('warning', 'Add image!');
+                $response->redirect('/addArticle');
+                exit;
+            }
+
 			$arr = DbDisplay::showLastArticles('articles', 1);
 			$id = $arr[0]['id'] + 1;
 			$name = substr($_FILES['image']['name'],-4);

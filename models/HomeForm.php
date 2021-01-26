@@ -96,11 +96,34 @@ class HomeForm extends DbModel
 			$title = $article['title'];
 			$time = $article['created_at'];
 			$id = $article['id'];
+			$image = $article['image'];
+			$subtitle = $article['subtitle'];
+
 
 			echo <<< msg
-		<p>
-			<b><a href="/article?id=$id">$title | [$time] </a></b><br>
-		</p>
+            
+                <div class="article-item">
+                    <div class="article-image">
+                        <img src="../img/$image">
+                    </div>
+                    <div class="recent-article_content">
+                        <div class="article-title_home">
+                            <a href="/article?id=$id">$title</a>
+                        </div>
+                        <div class="article-subtitle">
+                            <div class="subtitle">
+                                $subtitle
+                            </div>
+                        </div>
+                        <div class="article-footer">
+                            <div class="created-time">
+                                $time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			
+		
 msg;
 		}
 

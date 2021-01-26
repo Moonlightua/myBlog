@@ -25,11 +25,14 @@
 				</div>
 			</div>
 		</div>
-			<div class="question">RECENT ARTICLES</div>
+
+			<div class="question">
+                <span>RECENT ARTICLES</span>
+            </div>
 				<div class="articles-list">
 					<?php
 					/** @var $model \app\models\HomeForm */
-					$model->lastArticles(5);
+					$model->lastArticles(6);
 					?>
 				</div>
 			<div class="buttonpos">

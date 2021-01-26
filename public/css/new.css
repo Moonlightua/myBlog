@@ -27,7 +27,7 @@ a {
 }
 
 .top-menu{
-	height:175px;
+	height:143px;
 	background-color:whitesmoke;
 	word-wrap: break-word;
 }
@@ -38,30 +38,30 @@ a {
 	font-family: 'Oswald', sans-serif;
 	font-weight:500;
 	word-spacing:15px;
-	font-size:4em;
+	font-size:40px;
 	word-wrap: break-word;
 }
 .textunderlogo{
 	font-family: 'Oswald', sans-serif;
 	padding-left: 4%;
-	font-size:2em;
+	font-size:28px;
 	word-spacing:5px;
 	word-wrap: break-word;
 }
 .head-text{
-	padding-left: 1%;
+
 	font-weight: 700;
 	text-align: center;
 	background-color: #fbfbfb;
 	word-spacing: 45px;
-	padding-bottom: 2%;
-	padding-top: 2%;
-	font-size: 28px;
+	padding-bottom: 1.5%;
+	padding-top: 1%;
+	font-size: 23px;
 	word-wrap: break-word;
 	letter-spacing: 4px;
-	border-top:2px black solid;
-	border-bottom:2px black solid;
-	box-shadow: inset 0px -20px 20px 0px rgba(0, 0, 0, 0.3);
+	border-top: 2px black solid;
+	border-bottom: 2px black solid;
+	box-shadow: inset 0 -7px 47px 0 rgb(0 0 0 / 30%);
 }
 
 #menu .current-menu-item a {
@@ -78,7 +78,7 @@ footer{
 .title{
 	font-family: 'Oswald', sans-serif;
 	word-spacing: 5px;
-	font-size: 45px;
+	font-size: 33px;
 	text-align: center;
 	word-wrap: break-word;
 	padding-bottom:1%;
@@ -101,7 +101,7 @@ footer{
 	padding-right:20px;
 	font-family:'Comfortaa', cursive;
 	text-align:justify;
-	font-size:1.7em;
+	font-size:21px;
 	padding-bottom:1%;
 }
 .foot{
@@ -132,10 +132,10 @@ footer{
 }
 
 a {
-line-height: 1.2;
-position: relative;
-padding: 0 14px;
-text-transform: uppercase;
+	line-height: 1.2;
+	position: relative;
+	padding: 0 10px;
+	text-transform: uppercase;
 }
 
 a:hover{
@@ -169,27 +169,19 @@ left: 50%;
 transform: translate(-50%, -50%);
 color:white;
 }
+
 .centertext{
 font-family: 'Oswald', sans-serif;
-font-size:46px;
+font-size:30px;
 color:black;
 
 }
 .centerbottext{
 font-family: 'Comfortaa', cursive;
 font-weight:bold;
-font-size:26px;
+font-size:20px;
 color:black;
 }
-
-
-
-
-input[type="submit"]{
-
-}
-
-
 
 .animated-button.thar-two {
 border: 4px solid black;
@@ -234,10 +226,12 @@ padding-bottom: 3%;
 padding-top: 3%;
 }
 .question{
+
 font-family: 'Comfortaa', cursive;
 text-align:center;
-font-size:50px;
+font-size:33px;
 padding-top:3%;
+	position: relative;
 }
 .botquestion{
 font-family: 'Comfortaa', cursive;
@@ -264,9 +258,11 @@ padding-bottom: 2%;
 padding-bottom:5%;
 }
 .articles-list{
-font-family: 'Comfortaa', cursive;
-font-size: 22px;
-padding-left: 5%;
+	font-family: 'Comfortaa', cursive;
+	font-size: 20px;
+	display:flex;
+	flex-flow:row wrap;
+	width:100%;
 }
 
 .admin-links{
@@ -647,5 +643,111 @@ li {
 	word-spacing:0;
 	width: 59%;
 	padding-left: 45%;
+}
+
+.question:before{
+	content: '';
+	height: 2px;
+	width: 100%;
+	background-color: #e0e0e0;
+	position: absolute;
+	z-index: 5;
+	left: 0;
+	right: 0;
+	top: calc(70% - 1px);
+}
+
+
+.article-item {
+	margin-top: 0;
+	padding: 5px;
+	width: calc(99.9% * 1 / 3 - (30px - 30px * 1.0));
+}
+
+.article-item:nth-child(1n) {
+	float: left;
+	margin-bottom: 14px;
+	clear: none;
+}
+
+.article-item:nth-child(3n + 1) {
+	clear: both;
+}
+
+.article-image {
+	width: 100%; /* Ширина области */
+	height: 400px; /* Высота области */
+	margin: 0; /* Обнуляем отступы */
+}
+
+.article-image img {
+	width: 100%; /* Ширина изображений */
+	height: 100%; /* Высота изображении */
+	object-fit: cover; /* Вписываем фотографию в область */
+}
+
+.right-menu_admin {
+	text-align: right;
+	margin-top:1rem;
+	margin-bottom: 1rem;
+}
+
+.recent-article_content {
+	font-size:17px;
+}
+
+.article-items_admin {
+	display:flex;
+	flex-flow:row wrap;
+	width:100%;
+}
+
+.article-item_admin {
+	margin-top: 0;
+	padding: 5px;
+	width: calc(99.9% * 1 / 3 - (30px - 30px * 1.0));
+}
+
+.article-item_admin:nth-child(1n) {
+	float: left;
+	margin-bottom: 14px;
+	clear: none;
+}
+
+.article-item_admin:nth-child(3n + 1) {
+	clear: both;
+}
+
+.article-title_admin {
+	font-weight: bold;
+	word-spacing: 0px;
+}
+
+.article-content_admin {
+	font-family:'Comfortaa', cursive;
+	padding-top: 8px;
+	font-size: 19px;
+	min-height: calc(28vh - 41px);
+}
+
+.right-menu_admin {
+	position: relative;
+	bottom: 0;
+}
+
+.article-title_home {
+	font-weight: bold;
+}
+
+.article-title_admin a{
+	padding: 0px 0px 0px 0px;
+}
+
+.article-title_admin a:hover{
+	text-decoration: underline;
+}
+
+.article-title_admin a:after{
+	content: none;
 }
 

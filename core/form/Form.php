@@ -137,4 +137,16 @@ class Form
                 <textarea type="text" name="text" class="form-control textarea">%s</textarea>
         ',$label, $value);
     }
+
+    public function renderDiv($class)
+    {
+        return sprintf('
+                <div class="%s">        
+        ', $class);
+    }
+
+    public function endDiv()
+    {
+        echo "</div>";
+    }
 }

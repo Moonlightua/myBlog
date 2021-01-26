@@ -43,6 +43,7 @@ class AddArticleForm extends DbModel
 		return [
 			'title' => [self::RULE_REQUIRED],
 			'text' => [self::RULE_REQUIRED],
+            'image' => [self::RULE_REQUIRED],
             'subtitle' => [self::RULE_REQUIRED],
 			];
 
