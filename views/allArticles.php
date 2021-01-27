@@ -1,11 +1,12 @@
 <?php
 
 
+use app\core\form\Form;
 use app\models\AdminArticleDelete;
 use app\models\AdminArticleRender;
 use app\models\Blog;
 
-$form = new \app\core\form\Form();
+$form = new Form();
 $model = new Blog();
 $article = $model->showAll();
 

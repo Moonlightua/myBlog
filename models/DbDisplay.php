@@ -82,4 +82,25 @@ class DbDisplay
         return $result;
     }
 
+
+    public static function count(string $table)
+    {
+        $sql = "SELECT COUNT(*) FROM $table";
+        $statement = DbModel::prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        return $result;
+    }
+
+    public static function articlesPerPage($table, $offset, $articlesPerPage)
+    {
+        $sql = "SELECT * FROM $table ORDER BY id DESC LIMIT $offset, $articlesPerPage";
+        $statement = DbModel::prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll();
+
+        return $result;
+    }
+
 }

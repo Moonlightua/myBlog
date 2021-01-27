@@ -51,5 +51,17 @@ class Blog extends DbDisplay
 
 	}
 
+	public function articlesCount($table)
+    {
+        return parent::count($table);
+
+    }
+
+    public function articlePerPage($table, $offset, $articlesPerPage)
+    {
+        return parent::articlesPerPage($table, $offset, $articlesPerPage);
+    }
+
+
 
 }

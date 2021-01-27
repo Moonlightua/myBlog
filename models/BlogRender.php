@@ -17,7 +17,7 @@ class BlogRender
             $subtitle = $article['subtitle'];
 
                 echo <<< msg
-		<article class="article-item">
+		<article class="article-item_blog">
 msg;
                 if ($image != null) {
                     echo <<< msg
@@ -28,8 +28,8 @@ msg;
                 }
            echo <<< msg
             <div class="article-content">
-                <div class="article-title">
-                    <a href="/article?id=$id">$id. $title</a>
+                <div class="article-title_blog">
+                    <a href="/article?id=$id">$title</a>
                 </div>
                 <div class="article-subtile">
                     <span>$subtitle</span>
@@ -43,7 +43,7 @@ msg;
                     </div>
                 </div>
             </div>
-            <hr>
+           <div class="right-menu_admin"><hr></div>
 		</article>
 		
 msg;
