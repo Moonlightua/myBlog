@@ -798,18 +798,73 @@ li {
 }
 
 .pagination {
-	height: 10em;
+	height: 5em;
 	display: flex;
 	align-items: center;
-	justify-content: center
+	justify-content: center;
+	font-size:25px;
 }
 
 .pagination a{
 	padding: 0px 0px 0px 0px;
 }
 
-
+.pagination a:hover{
+	color:blue;
+}
 
 .pagination a:after{
 	content: none;
+}
+
+.pag-pages a {
+	padding-right: 5px;
+}
+
+.pag-items {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pag-item {
+	padding-right:15px;
+}
+
+.pag-pages {
+	display: flex;
+}
+
+.pag-pages.active a {
+	display: flex;
+	color:red;
+	text-decoration: none;
+}
+
+.pag-first {
+	text-decoration: underline;
+}
+
+.pag-first:hover {
+	text-decoration: none;
+}
+
+.pag-prev {
+	text-decoration: underline;
+}
+
+.pag-prev:hover {
+	text-decoration: none;
+}
+
+.pag-next {
+	text-decoration: underline;
+}
+
+.pag-next:hover {
+	text-decoration: none;
+}
+
+.pag-pages a {
+	text-decoration: underline;
 }
