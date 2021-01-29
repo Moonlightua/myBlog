@@ -6,8 +6,10 @@ namespace app\models;
 
 class AdminArticleDelete
 {
-    public function __construct(int $id, $model)
+    public function __construct(?int $id, $model)
     {
+
+        if (isset($_GET['del']) && is_numeric($_GET['del'])) {
             Delete::delete($id, get_class($model));
             if (get_class($model) == 'app\models\Blog') {
                 header("Location: /allArticles");
@@ -16,6 +18,6 @@ class AdminArticleDelete
             } else {
                 header("Location: /subEmails");
             }
-
+        }
     }
 }

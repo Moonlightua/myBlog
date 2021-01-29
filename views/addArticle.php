@@ -6,7 +6,10 @@
 use app\core\form\Form;
 use app\core\form\TextareaField;
 
+$this->title = 'Add New Article';
 ?>
+
+
 
 
 <h1>Add Article</h1>

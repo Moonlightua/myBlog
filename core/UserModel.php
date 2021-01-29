@@ -21,4 +21,26 @@ abstract class UserModel extends DbModel
 	abstract public function getDisplayName(): string;
 
 
+    /**
+     * This method display user name.
+     *
+     * @return string
+     */
+    abstract public function getDisplayEmail(): string;
+
+
+    /**
+     * This method display user name.
+     *
+     * @return string
+     */
+    abstract public function getDisplayCreatedDate(): string;
+
+
+    /**
+     * This method display user name.
+     *
+     * @return string
+     */
+    abstract public function getDisplayImage(): string;
 }

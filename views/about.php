@@ -1,3 +1,6 @@
+<?php
+$this->title = 'About';
+?>
 	<div class="title">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</div>
 	<div class="cont">
 		<img src="/img/luxfon.com-18755.jpg" alt="">

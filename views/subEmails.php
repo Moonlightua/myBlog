@@ -5,6 +5,8 @@
 use app\models\AdminArticleDelete;
 use app\models\SubEmailsRender;
 
+$this->title = 'Subscribers emails';
+
 $emails = $model->showSubList();
 
 if (isset($_GET['del']) && is_numeric($_GET['del'])) {

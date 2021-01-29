@@ -868,3 +868,15 @@ li {
 .pag-pages a {
 	text-decoration: underline;
 }
+
+.profile-image {
+	width:400px; /* Ширина области */
+	height: 450px; /* Высота области */
+	margin: 0; /* Обнуляем отступы */
+}
+
+.profile-image img {
+	width: 100%; /* Ширина изображений */
+	height: 100%; /* Высота изображении */
+	object-fit: cover; /* Вписываем фотографию в область */
+}

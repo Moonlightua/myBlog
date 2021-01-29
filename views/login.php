@@ -1,5 +1,6 @@
 <?php
 /** @var $model \app\models\User */
+$this->title = 'Login';
 ?>
 	<div class="login">
 		<div class="title contact">Login</div>

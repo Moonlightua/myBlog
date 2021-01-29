@@ -57,7 +57,7 @@ class Blog extends DbDisplay
 
     }
 
-    public function articlePerPage($table, $offset, $articlesPerPage)
+    public function articlePerPage($table, $offset, $articlesPerPage): array
     {
         return parent::articlesPerPage($table, $offset, $articlesPerPage);
     }

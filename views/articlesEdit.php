@@ -7,6 +7,7 @@
 /** @var $field \app\models\AddArticleForm */
 /** @var $model \app\models\Blog */
 
+$this->title = 'Edit Article';
 $path = $_SERVER['REQUEST_URI'];
 $position = strpos($path, '?');
 

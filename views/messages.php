@@ -5,6 +5,7 @@
 use app\models\AdminArticleDelete;
 use app\models\MessagesRender;
 
+$this->title = 'Messages';
 
 $messages = $model->showAllMessages();
 

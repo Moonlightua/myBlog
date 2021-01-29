@@ -36,4 +36,13 @@ msg;
 
     }
 
+    public function getArticleTitle(array $article)
+    {
+        foreach ($article as $item) {
+            $title = $item['title'];
+        }
+
+        return $title;
+    }
+
 }

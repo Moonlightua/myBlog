@@ -1,6 +1,6 @@
 <?php
 /** @var $model \app\models\User */
-
+$this->title = 'Register';
 ?>
 <div class="login">
 			<div class="title contact">Register</div>

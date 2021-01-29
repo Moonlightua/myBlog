@@ -7,7 +7,7 @@ use app\core\Application;
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title><?php /** @var $title \app\core\form\Form */ echo $this->title;?></title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 	<link href="css/normalize.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@ use app\core\Application;
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 	<link href="css/new.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/site/favicon.ico" type="image/x-icon">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>

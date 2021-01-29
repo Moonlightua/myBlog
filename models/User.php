@@ -133,4 +133,24 @@ class User extends UserModel
 	}
 
 
+    public function getDisplayEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getDisplayCreatedDate(): string
+    {
+        $email = $this->email;
+        $user = DbDisplay::showByEmail('users', $email);
+
+        return $user['created_at'];
+    }
+
+    public function getDisplayImage(): string
+    {
+        $email = $this->email;
+        $user = DbDisplay::showByEmail('users', $email);
+
+        return $user['image'];
+    }
 }

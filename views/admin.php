@@ -1,3 +1,6 @@
+<?php
+$this->title = 'Admin Panel';
+?>
 <div class="admin-panel">
 	<div class="admin-item">
 		<a href="/addArticle">Add New Article</a>

@@ -1,3 +1,6 @@
+<?php
+$this->title = 'Ideas To Change Your Life';
+?>
 <div class="body" width="100%">
 		<div class="title">IDEAS TO CHANGE YOUR LIFE</div>
 		<div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam euismod fermentum purus. Fusce tortor velit, pulvinar eget dictum id, ultrices ut sem. Aliquam erat volutpat. Sed erat dui, lobortis et maximus quis, tincidunt vel augue. Cras tempus ut eros id gravida. Vestibulum est orci, tincidunt vel dolor et, eleifend viverra felis. Donec lacinia id tortor vitae scelerisque. Cras sed rhoncus odio. Proin ac nisl ante. Maecenas aliquam dignissim ullamcorper.

@@ -53,6 +53,26 @@ class DbDisplay
 	}
 
 
+    /**
+     * This method return array of record by email from database.
+     *
+     * @param string $table
+     * @param string $condition
+     *
+     * @return array
+     */
+    public static function showByEmail(string $table, string $condition): array
+    {
+        $sql = "SELECT * FROM $table WHERE email='$condition'";
+        $statement = DbModel::prepare($sql);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result;
+
+    }
+
+
 	/**
 	 * This method return array of records with limit from database.
 	 *
@@ -93,7 +113,7 @@ class DbDisplay
         return $result;
     }
 
-    public static function articlesPerPage($table, $offset, $articlesPerPage)
+    public static function articlesPerPage($table, $offset, $articlesPerPage): array
     {
         $sql = "SELECT * FROM $table ORDER BY id DESC LIMIT $offset, $articlesPerPage";
         $statement = DbModel::prepare($sql);

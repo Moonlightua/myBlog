@@ -15,6 +15,8 @@ $article = $model->showOne($id);
 echo "<div class='inner-article'>";
 
 $render = new ArticleRender($article);
+$title = $render->getArticleTitle($article);
+$this->title = $title;
 
 
 echo "</div>";

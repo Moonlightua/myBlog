@@ -8,24 +8,17 @@
 /** @var $display DbDisplay */
 
 use app\core\form\PaginationForm;
+use app\models\ArticlesPerPage;
 use app\models\BlogRender;
 use app\models\CommentsRender;
 use app\models\DbDisplay;
 
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = 1;
-}
+$this->title = 'Blog';
 
-$articlesPerPage = 8;
-$offset = ($page - 1) * $articlesPerPage;
+const ARTICLES_PER_PAGE = 4;
 
-$count = $model->articlesCount('articles');
-$totalPages = ceil($count[0][0] / $articlesPerPage);
-
-$renderArticle = $model->articlePerPage('articles', $offset, $articlesPerPage);
-
+$articles = new ArticlesPerPage();
+$renderArticle = $articles->getArticles(ARTICLES_PER_PAGE, $model);
 
 $render = new BlogRender($renderArticle);
 
@@ -36,8 +29,7 @@ $render = new BlogRender($renderArticle);
 
 <?php
 
-$renderPagination = new PaginationForm($page, $totalPages);
-
+$renderPagination = new PaginationForm($articles->getPage(), $articles->totalPages($model, ARTICLES_PER_PAGE));
 
 $commentsRender = new CommentsRender($comments);
 
