@@ -42,9 +42,9 @@ class PaginationForm
 
         for ($i = 1; $i <= $totalPages; $i++){
             if ($i == $page) {
-                echo "<div class='pag-pages active'><a href='?page=$i'>".$i."</a></div>";
+                echo "<div class='pag-item active'><a href='?page=$i'>".$i."</a></div>";
             } else {
-                echo "<div class='pag-pages off'><a href='?page=$i'>".$i."</a></div>";
+                echo "<div class='pag-item off'><a href='?page=$i'>".$i."</a></div>";
             }
 
         }

@@ -818,7 +818,7 @@ li {
 }
 
 .pag-pages a {
-	padding-right: 5px;
+
 }
 
 .pag-items {
@@ -827,22 +827,24 @@ li {
 	justify-content: center;
 }
 
-.pag-item {
-	padding-right:15px;
+.pag-item a{
+	padding: 0px 10px;
+	color: black;
+	border: 1px solid #ddd;
 }
 
 .pag-pages {
 	display: flex;
 }
 
-.pag-pages.active a {
-	display: flex;
-	color:red;
+.pag-item.active a {
+	color:white;
 	text-decoration: none;
+	background-color: #6190E8;
 }
 
 .pag-first {
-	text-decoration: underline;
+
 }
 
 .pag-first:hover {
@@ -850,7 +852,7 @@ li {
 }
 
 .pag-prev {
-	text-decoration: underline;
+
 }
 
 .pag-prev:hover {
@@ -858,7 +860,7 @@ li {
 }
 
 .pag-next {
-	text-decoration: underline;
+
 }
 
 .pag-next:hover {
@@ -866,7 +868,7 @@ li {
 }
 
 .pag-pages a {
-	text-decoration: underline;
+
 }
 
 .profile-image {

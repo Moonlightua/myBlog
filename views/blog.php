@@ -32,8 +32,3 @@ $render = new BlogRender($renderArticle);
 $renderPagination = new PaginationForm($articles->getPage(), $articles->totalPages($model, ARTICLES_PER_PAGE));
 
 $commentsRender = new CommentsRender($comments);
-
-
-
-
-
