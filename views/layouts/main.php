@@ -1,5 +1,6 @@
 <?php
 use app\core\Application;
+use app\models\DesignModel;
 
 ?>
 
@@ -52,6 +53,17 @@ use app\core\Application;
 	</div>
 </header>
 <body>
+ <?php  if (DesignModel::imageExist($_SERVER['REQUEST_URI'])): ?>
+     <div class="main-image-menu">
+         <div class="menu-image">
+             <?php $name = DesignModel::imageName($_SERVER['REQUEST_URI']);
+             DesignModel::renderImage($name);
+             DesignModel::renderTitle($_SERVER['REQUEST_URI']);
+             DesignModel::renderSubtitle($_SERVER['REQUEST_URI']);
+             ?>
+         </div>
+     </div>
+ <?php endif; ?>
 <div class="main">
 	<div class="container">
 		<div class="content">
@@ -83,6 +95,7 @@ use app\core\Application;
 		<div style="clear:both"></div>
 
 		<div class="foot-text">
+            <div><a class="up" href="#">UP</a></div>
 			<hr style="height:0.1px;border-width:0;color:white;background-color:white">
 			&copy; 2021 Keep Calm Group , INC. ALL RIGHTS RESERVED
 		</div>

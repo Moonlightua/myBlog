@@ -52,6 +52,8 @@ $app->router->post('/addArticle', [AdminController::class, 'addArticle']);
 $app->router->get('/subEmails', [AdminController::class, 'subEmails']);
 $app->router->get('/messages', [AdminController::class, 'messages']);
 $app->router->get('/allArticles', [AdminController::class, 'allArticles']);
+$app->router->get('/Design', [AdminController::class, 'Design']);
+$app->router->post('/Design', [AdminController::class, 'Design']);
 
 $app->run();
 

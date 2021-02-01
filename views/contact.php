@@ -8,22 +8,23 @@ use app\core\form\TextareaField;
 $this->title = 'Contact';
 ?>
 
-<div class="centered contact">
-	<div class="title contact">Contact Us!</div>
 
-	<?php $form = \app\core\form\Form::begin('contact', 'post'); ?>
-	<?php echo $form->field($model, 'subject') ?>
-	<?php echo $form->field($model, 'email') ?>
-	<?php echo new TextareaField($model, 'body') ?>
-
-	<div class="butcont"><button type="submit" class="button contact">Submit</button></div>
-
-	<?php \app\core\form\Form::end(); ?>
-</div>
 
 <div class="backcolorcontact">
 	<div class="cont">
 		<img src="/img/meadow_forest_field_sky_trees_111008_1600x900.jpg" alt="" width="1583" height="650">
+        <div class="centered contact">
+            <div class="title contact">Contact Us!</div>
+
+            <?php $form = \app\core\form\Form::begin('contact', 'post'); ?>
+            <?php echo $form->field($model, 'subject') ?>
+            <?php echo $form->field($model, 'email') ?>
+            <?php echo new TextareaField($model, 'body') ?>
+
+            <div class="butcont"><button type="submit" class="button contact">Submit</button></div>
+
+            <?php \app\core\form\Form::end(); ?>
+        </div>
 	</div>
 	<div>
 		<div class="map">Find Us Here</div>

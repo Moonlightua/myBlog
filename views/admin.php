@@ -14,4 +14,7 @@ $this->title = 'Admin Panel';
     <div class="admin-item">
         <a href="/allArticles">All Articles</a>
     </div>
+    <div class="admin-item">
+        <a href="/Design">Site Design</a>
+    </div>
 </div>

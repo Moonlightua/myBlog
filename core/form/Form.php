@@ -149,4 +149,17 @@ class Form
     {
         echo "</div>";
     }
+
+    public function regionsSelection()
+    {
+        return '<label for="region">Choose a region for image:</label>
+                  <select id="region" name="region">
+                        <option value="/" selected>Home page</option>
+                        <option value="/about">About page</option>
+                        <option value="/blog">Blog page</option>
+                        <option value="/contact">Contact page</option>
+                        <option value="/profile">Profile page</option>
+                        <option value="/allArticles">Admin Articles List</option>
+                   </select>';
+    }
 }

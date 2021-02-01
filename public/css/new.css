@@ -49,7 +49,6 @@ a {
 	word-wrap: break-word;
 }
 .head-text{
-
 	font-weight: 700;
 	text-align: center;
 	background-color: #fbfbfb;
@@ -485,7 +484,7 @@ height:44px;
 	font-family: 'Comfortaa', cursive;
 	width: 35%;
 	position: absolute;
-	top: 70%;
+	top: 49%;
 	left: 49%;
 	transform: translate(-50%, -50%);
 	color: white;
@@ -511,6 +510,7 @@ height:44px;
 	width: 30%;
 	font-size: 26px;
 	height:44px;
+	text-align: center;
 }
 
 .button:hover {
@@ -519,11 +519,6 @@ height:44px;
 	background-color: black;
 	border: none;
 	height:44px;
-}
-
-.butcont {
-	padding-left: 199px;
-	width: 593px;
 }
 
 .login {
@@ -627,7 +622,7 @@ textarea{
 	display:flex;
 	flex-flow:row;
 	font-size:30px;
-	padding-left: 9%;
+	padding-left: 4%;
 }
 
 .admin-item{
@@ -817,10 +812,6 @@ li {
 	content: none;
 }
 
-.pag-pages a {
-
-}
-
 .pag-items {
 	display: flex;
 	align-items: center;
@@ -828,9 +819,9 @@ li {
 }
 
 .pag-item a{
-	padding: 0px 10px;
+	padding: 0px 15px;
 	color: black;
-	border: 1px solid #ddd;
+	border: 1px solid #dddddd;
 }
 
 .pag-pages {
@@ -841,34 +832,19 @@ li {
 	color:white;
 	text-decoration: none;
 	background-color: #6190E8;
-}
-
-.pag-first {
-
+	border: 1px solid #6190E8;
 }
 
 .pag-first:hover {
 	text-decoration: none;
 }
 
-.pag-prev {
-
-}
-
 .pag-prev:hover {
 	text-decoration: none;
 }
 
-.pag-next {
-
-}
-
 .pag-next:hover {
 	text-decoration: none;
-}
-
-.pag-pages a {
-
 }
 
 .profile-image {
@@ -881,4 +857,87 @@ li {
 	width: 100%; /* Ширина изображений */
 	height: 100%; /* Высота изображении */
 	object-fit: cover; /* Вписываем фотографию в область */
+}
+
+.menu-image {
+	width: 100%; /* Ширина области */
+	height: 600px; /* Высота области */
+	margin: 0; /* Обнуляем отступы */
+}
+
+.menu-image img {
+	width: 100%; /* Ширина изображений */
+	height: 100%; /* Высота изображении */
+	object-fit: cover; /* Вписываем фотографию в область */
+}
+
+
+
+.menu-image {
+	position: relative;
+	z-index: 0;
+}
+
+.menu-image:before {
+	content: '';
+	display: block;
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(to bottom, #2c3e50 0%, rgba(253, 187, 45, 0.05) 100%);
+	background-repeat: repeat-x;
+}
+
+.menu-image_title {
+	position: absolute;
+	bottom: 50%;
+	top: 25%;
+	left: 8%;
+	z-index: 10;
+	font-size: 69px;
+	height: 150px;
+	word-break: break-all;
+	width: 1400px;
+	color: white;
+}
+
+.menu-image_subtitle {
+	position: absolute;
+	bottom: 50%;
+	top: 48%;
+	left: 8%;
+	z-index: 10;
+	font-size: 46px;
+	height: 150px;
+	word-break: break-all;
+	width: 1400px;
+	color: white;
+}
+
+.up{
+	width: 42px;
+	height: 42px;
+	border-radius: 50px;
+	background: #434343;
+	box-shadow: 0 3px 6px #434343;
+	color: white;
+	font-size: 24px;
+	line-height: 42px;
+	text-align: center;
+	transition: all 0.5s ease;
+}
+
+.up {
+	padding: 12px;
+}
+
+.up:after {
+	content: none;
+}
+
+.up:hover {
+	color:black;
 }

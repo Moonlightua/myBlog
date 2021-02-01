@@ -16,6 +16,7 @@ use app\models\Admin;
 use app\models\Blog;
 use app\models\DbDisplay;
 use app\models\Messages;
+use app\models\SiteDesignForm;
 use app\models\SubEmails;
 
 /**
@@ -123,6 +124,45 @@ class AdminController extends Controller
             return $this->render('articlesEdit', $params);
 
         }
+
+    }
+
+    /**
+     * This method return page with site design settings.
+     *
+     * @return string|string[]
+     */
+    public function Design(Request $request, Response $response)
+    {
+        $design = new SiteDesignForm();
+
+        if ($request->isPost()) {
+            if ($_FILES['image']['size'] == 0) {
+                Application::$app->session->setFlash('warning', 'Add image!');
+                $response->redirect('/addArticle');
+                exit;
+            }
+
+            $name = $_POST['region'];
+            if ($name == '/') {
+                $name = 'home';
+            } elseif (strlen($name) > 1) {
+                $name = substr($name, 1);
+            }
+            $imageType = substr($_FILES['image']['name'],-4);
+            $image_id = $name . $imageType;
+            $image_path = '../public/img/menu-images/'. $image_id;
+            copy($_FILES['image']['tmp_name'], $image_path);
+
+            $design->loadData($request->getBody());
+            $design->image = $image_id;
+            if ($design->validate() && $design->save()) {
+                Application::$app->session->setFlash('success', 'Article successful added!');
+                $response->redirect('/Design');
+            }
+        }
+
+        return $this->render('design', ['model' => $design]);
 
     }
 

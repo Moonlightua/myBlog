@@ -123,4 +123,23 @@ class DbDisplay
         return $result;
     }
 
+    /**
+     * This method return array of record by email from database.
+     *
+     * @param string $table
+     * @param string $condition
+     *
+     * @return array
+     */
+    public static function showByCondition(string $table,string $search, string $condition)
+    {
+        $sql = "SELECT * FROM $table WHERE $search='$condition'";
+        $statement = DbModel::prepare($sql);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result;
+
+    }
+
 }
