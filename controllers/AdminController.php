@@ -50,6 +50,7 @@ class AdminController extends Controller
 	{
 
 		$article = new AddArticleForm();
+        $design = new SiteDesignForm();
 
 		if ($request->isPost()) {
 
@@ -59,8 +60,9 @@ class AdminController extends Controller
                 exit;
             }
 
-			$arr = DbDisplay::showLastArticles('articles', 1);
-			$id = $arr[0]['id'] + 1;
+			$arr = DbDisplay::showLastArticles('article_id', 1);
+			$id = $arr['article_id'] + 1;
+			$article->saveId($id);
 			$name = substr($_FILES['image']['name'],-4);
 			$image_id = $id . $name;
 			$image_path = '../public/img/'. $image_id;
@@ -68,12 +70,21 @@ class AdminController extends Controller
 
 			$article->loadData($request->getBody());
             $article->image = $image_id;
+
+            $imagePathHead = '../public/img/menu-images/'. $image_id;
+            $design->title = $_POST['title'];
+            $design->image = $image_id;
+            $design->region = "/article?id=$id";
+            $design->subtitle = $_POST['subtitle'];
+            $design->save();
+            $design->saveEditPage($id);
+            copy($_FILES['image']['tmp_name'], $imagePathHead);
 			if ($article->validate() && $article->save()) {
+
 				Application::$app->session->setFlash('success', 'Article successful added!');
 				$response->redirect('/addArticle');
 			}
 		}
-
 		return $this->render('addArticle', ['model' => $article]);
 
 	}

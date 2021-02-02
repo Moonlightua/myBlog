@@ -76,4 +76,13 @@ class SiteDesignForm extends DbModel
         return parent::save();
 
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function saveEditPage($id)
+    {
+        $this->region = "/allArticles?edit=$id";
+        return parent::save();
+    }
 }

@@ -22,7 +22,7 @@ msg;
                 if ($image != null) {
                     echo <<< msg
             <div class="article-image">
-               <img src="../img/$image">
+             <a href="/article?id=$id">  <img src="../img/$image"></a>
             </div>
 msg;
                 }

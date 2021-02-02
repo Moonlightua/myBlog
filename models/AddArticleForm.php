@@ -34,6 +34,12 @@ class AddArticleForm extends DbModel
      */
     public ?string $subtitle = '';
 
+    /**
+     * @var string
+     */
+    public ?string $article_id = '';
+
+
 
 	/**
 	 * {@inheritdoc}
@@ -109,4 +115,18 @@ class AddArticleForm extends DbModel
     {
         return parent::edit($id);
 	}
+
+	public function saveId($id)
+    {
+        $tableName = 'article_id';
+
+        $statement = self::prepare("INSERT INTO $tableName (article_id) VALUES(:id)");
+
+        $statement->bindValue(":id", $id);
+
+        $statement->execute();
+
+        return true;
+    }
+
 }

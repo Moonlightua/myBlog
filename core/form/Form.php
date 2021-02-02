@@ -160,6 +160,11 @@ class Form
                         <option value="/contact">Contact page</option>
                         <option value="/profile">Profile page</option>
                         <option value="/allArticles">Admin Articles List</option>
+                        <option value="/Design">Design Page</option>
+                        <option value="/admin">Admin Panel Page</option>
+                        <option value="/messages">Messages Page</option>
+                        <option value="/subEmails">Subscribers Emails Page</option>
+                        <option value="/addArticle">Add New Article Page</option>
                    </select>';
     }
 }

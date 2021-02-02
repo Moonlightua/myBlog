@@ -25,45 +25,44 @@ use app\models\DesignModel;
 				<div class="logo-text"><a href="/" style="color:black;text-decoration:none;border:none">RELAX, YOU'RE DOING FINE!</a></div>
 				<div class="textunderlogo">Life Advice That Doesn't Suck</div>
 	</div>
-
-	<div class="head-text" id="menu">
-		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/blog">Blog</a>
-		<a href="/contact">Contact</a>
-		<?php if (Application::isGuest()): ?>
-		<a href="/login">Login</a>
-		<a href="/register">Register</a>
-		<?php else: ?>
-		<a href="/profile">Profile</a>
-		<a class="right" href="/logout">Logout</a>
-		<div class="username">
-			Welcome, <?php echo Application::$app->user->getDisplayName(); ?>
-		</div>
-		<?php endif; ?>
-		<?php if (Application::isAdmin()): ?>
-		<div class="navbar-admin">
-			<a class="nav-link" aria-current="page" href="/admin">
-				Admin Panel
-			</a>
-		</div>
-
-
-		<?php endif; ?>
-	</div>
+    <div class="head-menu">
+        <div class="head-text" id="menu">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+            <a href="/contact">Contact</a>
+            <?php if (Application::isGuest()): ?>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <?php else: ?>
+            <a href="/profile">Profile</a>
+            <a class="right" href="/logout">Logout</a>
+            <div class="username">
+                Welcome, <?php echo Application::$app->user->getDisplayName(); ?>
+            </div>
+            <?php endif; ?>
+            <?php if (Application::isAdmin()): ?>
+            <div class="navbar-admin">
+                <a class="nav-link" aria-current="page" href="/admin">
+                    Admin Panel
+                </a>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php  if (DesignModel::imageExist($_SERVER['REQUEST_URI'])): ?>
+            <div class="main-image-menu">
+                <div class="menu-image">
+                    <?php $name = DesignModel::imageName($_SERVER['REQUEST_URI']);
+                    DesignModel::renderTitle($_SERVER['REQUEST_URI']);
+                    DesignModel::renderSubtitle($_SERVER['REQUEST_URI']);
+                    DesignModel::renderImage($name);
+                    ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
 </header>
 <body>
- <?php  if (DesignModel::imageExist($_SERVER['REQUEST_URI'])): ?>
-     <div class="main-image-menu">
-         <div class="menu-image">
-             <?php $name = DesignModel::imageName($_SERVER['REQUEST_URI']);
-             DesignModel::renderImage($name);
-             DesignModel::renderTitle($_SERVER['REQUEST_URI']);
-             DesignModel::renderSubtitle($_SERVER['REQUEST_URI']);
-             ?>
-         </div>
-     </div>
- <?php endif; ?>
 <div class="main">
 	<div class="container">
 		<div class="content">

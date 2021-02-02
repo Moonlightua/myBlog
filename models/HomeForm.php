@@ -104,7 +104,7 @@ class HomeForm extends DbModel
             
                 <div class="article-item">
                     <div class="article-image">
-                        <img src="../img/$image">
+                        <a href="/article?id=$id"><img src="../img/$image"></a>
                     </div>
                     <div class="recent-article_content">
                         <div class="article-title_home">
