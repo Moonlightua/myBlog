@@ -26,36 +26,44 @@ use app\models\DesignModel;
 				<div class="textunderlogo">Life Advice That Doesn't Suck</div>
 	</div>
     <div class="head-menu">
-        <div class="head-text" id="menu">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/blog">Blog</a>
-            <a href="/contact">Contact</a>
-            <?php if (Application::isGuest()): ?>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-            <?php else: ?>
-            <a href="/profile">Profile</a>
-            <a class="right" href="/logout">Logout</a>
-            <div class="username">
-                Welcome, <?php echo Application::$app->user->getDisplayName(); ?>
-            </div>
-            <?php endif; ?>
-            <?php if (Application::isAdmin()): ?>
-            <div class="navbar-admin">
-                <a class="nav-link" aria-current="page" href="/admin">
-                    Admin Panel
-                </a>
-            </div>
-            <?php endif; ?>
+        <div id="mainmenu">
+            <ul>
+                <li><a id="home" href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <?php if (Application::isGuest()): ?>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                <?php else: ?>
+                    <li><a href="/profile">Profile</a></li>
+
+                    <li><div class="username">
+                            Welcome, <?php echo Application::$app->user->getDisplayName(); ?>
+                        </div></li>
+                <?php endif; ?>
+                <?php if (Application::isAdmin()): ?>
+                    <li><div class="navbar-admin">
+                            <a class="nav-link" aria-current="page" id="home" href="/admin">
+                                Admin Panel
+                            </a>
+                        </div></li>
+                    <li><a href="/logout">Logout</a></li>
+                <?php endif; ?>
+            </ul>
         </div>
         <?php  if (DesignModel::imageExist($_SERVER['REQUEST_URI'])): ?>
             <div class="main-image-menu">
                 <div class="menu-image">
                     <?php $name = DesignModel::imageName($_SERVER['REQUEST_URI']);
-                    DesignModel::renderTitle($_SERVER['REQUEST_URI']);
-                    DesignModel::renderSubtitle($_SERVER['REQUEST_URI']);
-                    DesignModel::renderImage($name);
+                    if ($name == 'home.mp4') {
+                        echo '<div class="menu-video"><video autoplay loop muted><source src="../videos/home.mp4" type="video/mp4"></video></div>';
+                    } else {
+                        DesignModel::renderTitle($_SERVER['REQUEST_URI']);
+                        DesignModel::renderSubtitle($_SERVER['REQUEST_URI']);
+                        DesignModel::renderImage($name);
+                    }
+
                     ?>
                 </div>
             </div>

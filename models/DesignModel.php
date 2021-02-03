@@ -28,7 +28,10 @@ class DesignModel extends DbDisplay
             $region = $_SERVER['PATH_INFO'];
         } elseif (substr($region, 0,12) == '/allArticles') {
             $region = $_SERVER['PATH_INFO'];
+        } elseif ($region == '/') {
+            return 'home.mp4';
         }
+
         $image = self::showByCondition('menu_images', 'region', $region);
         return $image['image'];
     }

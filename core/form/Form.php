@@ -165,6 +165,8 @@ class Form
                         <option value="/messages">Messages Page</option>
                         <option value="/subEmails">Subscribers Emails Page</option>
                         <option value="/addArticle">Add New Article Page</option>
+                        <option value="/login">Login Page</option>
+                        <option value="/register">Register Page</option>
                    </select>';
     }
 }
